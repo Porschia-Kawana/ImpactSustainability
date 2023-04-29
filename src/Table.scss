@@ -1,0 +1,108 @@
+@import "./global.scss";
+
+.UsageTable {
+    margin: 40px 0px;
+
+    .Container {
+        background-color: $background-primary;
+        border: 1px solid $background-other;
+        border-bottom: none;
+        border-radius: 4px;
+
+        .Header {
+            border-radius: 4px;
+            display: flex;
+            gap: 10px;
+            padding: 10px;
+
+            .Input {
+                width: auto;
+                border: 1px solid $background-other;
+                border-radius: 4px;
+                height: auto;
+
+                input,
+                select {
+                    box-sizing: border-box;
+                    border-radius: 4px;
+                    padding: 10px;
+                    border: none;
+                    outline: none;
+                }
+
+                input {
+                    color: $text-other;
+                    width: 150px;
+                }
+
+                select {
+                    color: $text-secondary;
+                    margin-right: 10px;
+                }
+            }
+        }
+
+        table {
+            border-collapse: collapse;
+            border-radius: 4px;
+
+            thead {
+                tr {
+                    border-bottom: 1px solid $background-other;
+                    background-color: $background-secondary;
+
+                    th {
+                        color: $text-primary;
+                        padding: 10px 20px;
+                    }
+                }
+            }
+            tbody {
+                tr {
+                    border-bottom: 1px solid $background-other;
+
+                    td {
+                        color: $text-primary;
+                        padding: 10px 20px;
+                    }
+                }
+            }
+        }
+    }
+
+    .Pagination {
+        align-items: center;
+        color: $text-other;
+        display: flex;
+        justify-content: center;
+        padding: 10px 20px;
+
+        .text {
+            margin-right: 10px;
+        }
+        .button {
+            align-items: center;
+            background-color: $background-primary;
+            border: 1px solid $background-other;
+            color: $text-other;
+            font-weight: bolder;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            height: 25px;
+            width: 25px;
+
+            &.left {
+                border-right: none;
+                border-top-left-radius: 4px;
+                border-bottom-left-radius: 4px;
+            }
+
+            &.right {
+                border-left: none;
+                border-top-right-radius: 4px;
+                border-bottom-right-radius: 4px;
+            }
+        }
+    }
+}
