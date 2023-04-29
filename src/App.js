@@ -6,6 +6,21 @@ function App() {
     const [data, setData] = useState();
     const [selectAll, setSelectAll] = useState();
 
+    function filterGreaterThan(rows, id, filterValue) {
+        if (filterValue.range) {
+            const filtered = rows.filter(row => {
+                let startDate = new Date(row.original.startDate).getTime();
+                let lastYear = new Date(filterValue.range).getTime();
+                return startDate >= lastYear
+            })
+            return filtered
+        } else {
+            return rows.filter(row => {
+                return new Date(row.original.startDate).getFullYear() === filterValue
+            })
+        }
+    }
+
     const handleSelected = (current, selected) => {
         const updateData = data.map((row) => {
             if (row === current) {
@@ -64,6 +79,7 @@ function App() {
             }, {
                 Header: "Start date",
                 accessor: "startDate",
+                filter: filterGreaterThan,
             }, {
                 Header: "End date",
                 accessor: "endDate",

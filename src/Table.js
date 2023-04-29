@@ -70,8 +70,12 @@ export default function Table({ columns, data }) {
         setYearFilterInput(e.target.value);
         if (e.target.value === "All years") setFilter("startDate", undefined);
         else if (e.target.value === "Last 12 months") {
-            // TODO::: Need to look into how to do date range filtering on react table 
-            setFilter("startDate", new Date().getFullYear() - 1)
+            function subtractYears(date) {
+                date.setFullYear(date.getFullYear() - 1);
+                return date;
+            }
+
+            setFilter("startDate", { range: subtractYears(new Date()) })
         }
         else setFilter("startDate", new Date(e.target.value).getFullYear());
     }
