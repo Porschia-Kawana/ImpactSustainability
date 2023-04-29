@@ -38,6 +38,7 @@ export default function Table({ columns, data }) {
         getTableBodyProps,
         headerGroups,
         page,
+        flatRows,
         prepareRow,
         setFilter,
         setGlobalFilter,
@@ -162,7 +163,7 @@ export default function Table({ columns, data }) {
             </div>
             <div className="Pagination">
                 <div className="text">
-                    {pageIndex * pageSize + pageSize < data.length ? pageIndex * pageSize + pageSize : data.length} of {data.length}
+                    {pageIndex * pageSize + pageSize < flatRows.length ? pageIndex * pageSize + pageSize : flatRows.length} of {flatRows.length}
                 </div>
                 <button className="button left" onClick={() => previousPage()} disabled={!canPreviousPage}>
                     {'<'}
