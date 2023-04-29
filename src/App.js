@@ -1,6 +1,7 @@
 import { useEffect, useState, useMemo } from "react";
-import "./App.scss";
 import Table from "./Table";
+
+import "./App.scss";
 
 function App() {
     const [data, setData] = useState();
@@ -90,7 +91,7 @@ function App() {
                 Header: "Usage",
                 accessor: "usageKwh",
             }, {
-                Header: "Green Power %",
+                Header: "GreenPower %",
                 accessor: "greenPower",
             }, {
                 Header: "Amount Paid",
@@ -109,12 +110,17 @@ function App() {
                 return response.text()
             })
             .then(data => {
-                // TODO:::
-                // Format Start and End Date
-                // Add units and currencies to appropriate fields
                 const responses = JSON.parse(data)
+                var options = { year: 'numeric', month: 'short', day: 'numeric' };
+
                 const selectResponse = responses.map((response) => {
                     response.selected = false
+                    response.startDate = new Date(response.startDate).toLocaleDateString("en-US", options)
+                    response.endDate = new Date(response.endDate).toLocaleDateString("en-US", options)
+                    response.usageKwh = response.usageKwh + ' kWh'
+                    response.emissions = response.emissions + ' tC02e'
+                    response.greenPower = response.greenPower + '%'
+                    response.amountPaid = '$' + Number(response.amountPaid).toFixed(2)
                     return response
                 })
 
