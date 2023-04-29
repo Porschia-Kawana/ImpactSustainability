@@ -82,7 +82,6 @@ export default function Table({ columns, data }) {
     }
 
     const handleLocationFilter = e => {
-        console.log(e.target.value)
         const value = e.target.value !== "All locations" ? e.target.value : undefined;
         setFilter("location", value);
         setLocationFilterInput(value);
